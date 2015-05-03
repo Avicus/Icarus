@@ -1,0 +1,61 @@
+map:
+  name: "Map Name"
+  version: 1.0.0
+  authors:
+  # KyloCode
+  - uuid: 8242e55e-cc6a-458a-b272-a2b34918045f
+    role: "YAML author."
+  # Notch
+  - uuid: 069a79f4-44e9-4726-a5be-fca90e38aaf5
+    role: "Created Minecraft."
+
+
+teams:
+- id: red
+  name: "Red Team"
+  color: red
+  max: 16
+- id: blue
+  name: "Blue Team"
+  color: blue
+  max: 16
+
+regions:
+- id: center-area
+  point: -74, 141, 255
+- id: stone-castle
+  sphere: -64, 121, 215
+  radius: 8
+- id: palace
+  cuboid:
+  - 12, 121, 215
+  - -64, 141, 255
+- id: tower
+  cylinder: -82, 121, 215
+  radius: 3
+  height: 25
+- id: playable
+  global: true
+
+spawns:
+- id: default
+  yaw: 90
+  regions:
+  - point: -74.5, 141, 255.5
+- id: red-spawn
+  team: red
+  yaw: 0
+  regions:
+  - point: -75, 80, 176.5
+- id: blue-spawn
+  team: blue
+  regions:
+  - point: -74, 80, 335.5
+
+loadouts:
+- id: red
+  items:
+  - slot: 0
+    item: stone sword
+  - slot: 5
+    item: glass
