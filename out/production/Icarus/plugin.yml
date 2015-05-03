@@ -1,8 +1,0 @@
-name: Icarus
-description: A game manager for Bukkit.
-main: net.avicus.icarus.Icarus
-version: 0.0.1
-authors: [Avicus]
-commands:
-  icarus:
-    description: Icarus plugin controls.
