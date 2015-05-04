@@ -1,5 +1,6 @@
 package net.avicus.icarus.utils;
 
+import net.avicus.icarus.utils.MapVersion;
 import net.avicus.icarus.utils.config.ConfigSection;
 import net.avicus.icarus.match.Match;
 import net.avicus.icarus.module.regions.*;
@@ -84,6 +85,13 @@ public class ParsingUtils {
         }
         else if (config.contains("global")) {
             return new RegionGlobal();
+        }
+        else if (config.contains("join")) {
+            List<ConfigSection> list = config.getSectionList("join");
+            List<Region> joined = new ArrayList<Region>();
+            for (ConfigSection cs : list)
+                joined.add(parseRegion(match, cs));
+            return new RegionJoin(joined);
         }
         else if (config.contains("id")) {
             RegionsModule regions = match.getModule(RegionsModule.class);

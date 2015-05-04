@@ -172,8 +172,8 @@ public class ConfigSection {
      * @param key Path to the data.
      * @return Value of the key.
      */
-    public double getDouble(String key) {
-        return (Double) get(key);
+    public double getDouble(String key, double def) {
+        return Double.valueOf(get(key, def) + "");
     }
 
     /**

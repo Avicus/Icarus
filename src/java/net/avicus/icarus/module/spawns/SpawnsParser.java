@@ -53,8 +53,8 @@ public class SpawnsParser implements Parser<SpawnsModule> {
             return new Spawn(id, team, regions, to);
         }
         else {
-            int yaw = config.getInt("yaw", 0);
-            int pitch = config.getInt("pitch", 0);
+            float yaw = (float) config.getDouble("yaw", 0);
+            float pitch = (float) config.getDouble("pitch", 0);
             return new Spawn(id, team, regions, yaw, pitch);
         }
     }

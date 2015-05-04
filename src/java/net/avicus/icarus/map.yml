@@ -1,13 +1,13 @@
 map:
-  name: "Map Name"
-  version: 1.0.0
+  name: "Axis"
+  version: 1.2.0
   authors:
   # KyloCode
   - uuid: 8242e55e-cc6a-458a-b272-a2b34918045f
-    role: "YAML author."
+    role: "Map designer, creator and YAML author."
   # Notch
-  - uuid: 069a79f4-44e9-4726-a5be-fca90e38aaf5
-    role: "Created Minecraft."
+  - uuid: bf331953-4f92-43ee-8abc-7544b8234936
+    role: "Helpd with building, provided design feedback."
 
 
 teams:
@@ -20,42 +20,95 @@ teams:
   color: blue
   max: 16
 
-regions:
-- id: center-area
-  point: -74, 141, 255
-- id: stone-castle
-  sphere: -64, 121, 215
-  radius: 8
-- id: palace
-  cuboid:
-  - 12, 121, 215
-  - -64, 141, 255
-- id: tower
-  cylinder: -82, 121, 215
-  radius: 3
-  height: 25
-- id: playable
-  global: true
-
 spawns:
 - id: default
-  yaw: 90
+  yaw: 20.0
+  pitch: -5.5
   regions:
-  - point: -74.5, 141, 255.5
+  - point: -9, 80, -86
 - id: red-spawn
   team: red
-  yaw: 0
   regions:
-  - point: -75, 80, 176.5
+  - point: -27.5, 71, -91.5
 - id: blue-spawn
   team: blue
+  yaw: 180
   regions:
-  - point: -74, 80, 335.5
+  - point: -27.5, 71, 109.5
+
+monuments:
+# RED
+- name: Left
+  owner: red
+  regions:
+  - point: -75, 67, -56
+- name: Center
+  owner: red
+  regions:
+  - point: -28, 67, -29
+- name: Right
+  owner: red
+  regions:
+  - point: 19, 67, -56
+# BLUE
+- name: Left
+  owner: blue
+  regions:
+  - point: 19, 67, 70
+- name: Center
+  owner: blue
+  regions:
+  - point: -28, 67, 43
+- name: Right
+  owner: blue
+  regions:
+  - point: -75, 67, 70
 
 loadouts:
-- id: red
+- id: default
   items:
-  - slot: 0
-    item: stone sword
-  - slot: 5
-    item: glass
+  - slot: 8
+    item: iron ingot
+  - slot: helmet
+    item: leather helmet
+    damage: -3000
+  - slot: chestplate
+    item: leather chestplate
+    damage: -3000
+  - slot: leggings
+    item: leather leggings
+    damage: -3000
+  - slot: boots
+    item: leather boots
+    damage: -3000
+  effects:
+  - night vision:1
+  - damage resistance:5,5s
+
+regions:
+- id: jumps
+  join:
+  - point: -18, 65, -56
+  - point: -38, 65, -56
+  - point: -38, 75, 70
+  - point: -18, 75, 70
+- id: big-jumps
+  join:
+  - point: -28, 65, 27
+  - point: -28, 65, -13
+
+events:
+- on: move
+  conditions:
+  - to:
+    - id: jumps
+  trigger:
+  - push: 3.5
+  - icarus: 1.9
+- on: move
+  conditions:
+  - to:
+    - id: big-jumps
+  trigger:
+  - push: 7.5
+  - icarus: 2.3

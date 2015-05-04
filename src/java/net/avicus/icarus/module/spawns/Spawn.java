@@ -14,11 +14,11 @@ public class Spawn {
     @Getter final String id;
     @Getter final Team team;
     @Getter final List<Region> regions;
-    @Getter int yaw = 0;
-    @Getter int pitch = 0;
+    @Getter float yaw = 0;
+    @Getter float pitch = 0;
     @Getter Vector look;
 
-    public Spawn(String id, Team team, List<Region> regions, int yaw, int pitch) {
+    public Spawn(String id, Team team, List<Region> regions, float yaw, float pitch) {
         this.id = id;
         this.team = team;
         this.regions = regions;
