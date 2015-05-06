@@ -5,6 +5,8 @@ import net.avicus.icarus.utils.config.ConfigSection;
 import net.avicus.icarus.match.Match;
 import net.avicus.icarus.module.regions.*;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
@@ -101,6 +103,17 @@ public class ParsingUtils {
         }
         else
             throw new IllegalArgumentException("Unknown region type.");
+    }
+
+    public static ItemStack parseItem(Match match, ConfigSection config) {
+        Material material = Material.getMaterial(config.getString("item").toUpperCase().replace(" ", "_"));
+        int amount = config.getInt("amount");
+
+        ItemStack item = new ItemStack(material, amount);
+        if (!config.empty("damage"))
+            item.setDurability(Short.parseShort(config.getString("damage")));
+
+        return item;
     }
 
 }
