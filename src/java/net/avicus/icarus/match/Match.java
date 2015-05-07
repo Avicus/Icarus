@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.ToString;
 import net.avicus.icarus.module.Parser;
 import net.avicus.icarus.module.Module;
+import net.avicus.icarus.module.loadouts.LoadoutParser;
 import net.avicus.icarus.module.map.MapParser;
 import net.avicus.icarus.module.regions.RegionsParser;
 import net.avicus.icarus.module.spawns.SpawnsParser;
@@ -28,6 +29,7 @@ public class Match {
         init(RegionsParser.class);
         init(TeamsParser.class);
         init(SpawnsParser.class);
+        init(LoadoutParser.class);
     }
 
     @SuppressWarnings("unchecked")
