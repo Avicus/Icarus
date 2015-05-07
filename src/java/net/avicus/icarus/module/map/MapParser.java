@@ -2,11 +2,11 @@ package net.avicus.icarus.module.map;
 
 import net.avicus.icarus.utils.Author;
 import net.avicus.icarus.utils.MapVersion;
+import net.avicus.icarus.utils.ParserUtils;
 import net.avicus.icarus.utils.config.ConfigSection;
 import net.avicus.icarus.match.Match;
 import net.avicus.icarus.module.Parser;
 import net.avicus.icarus.module.ParserException;
-import net.avicus.icarus.utils.ParsingUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class MapParser implements Parser<MapModule> {
             throw new ParserException(this, "At least one author is required.");
 
         String name = config.getString("name");
-        MapVersion version = ParsingUtils.parseVersion(config.getString("version"));
+        MapVersion version = ParserUtils.parseVersion(config.getString("version"));
         List<Author> authors = parseAuthors(config.getSectionList("authors"));
         List<Author> contributors = parseAuthors(config.getSectionList("contributors"));
 

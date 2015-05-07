@@ -1,10 +1,10 @@
 package net.avicus.icarus.module.regions;
 
+import net.avicus.icarus.utils.ParserUtils;
 import net.avicus.icarus.utils.config.ConfigSection;
 import net.avicus.icarus.match.Match;
 import net.avicus.icarus.module.Parser;
 import net.avicus.icarus.module.ParserException;
-import net.avicus.icarus.utils.ParsingUtils;
 
 import java.util.HashMap;
 
@@ -24,7 +24,7 @@ public class RegionsParser implements Parser<RegionsModule> {
                 throw new ParserException(this, "Duplicate region ID used \"" + id + "\".");
 
             try {
-                regions.put(id, ParsingUtils.parseRegion(match, cs));
+                regions.put(id, ParserUtils.parseRegion(match, cs));
             } catch (Exception e) {
                 throw new ParserException(this, "Failed to parse region \"" + id + "\".", e);
             }

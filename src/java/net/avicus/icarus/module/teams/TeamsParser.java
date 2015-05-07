@@ -3,7 +3,7 @@ package net.avicus.icarus.module.teams;
 import net.avicus.icarus.match.Match;
 import net.avicus.icarus.module.Parser;
 import net.avicus.icarus.module.ParserException;
-import net.avicus.icarus.utils.ParsingUtils;
+import net.avicus.icarus.utils.ParserUtils;
 import net.avicus.icarus.utils.config.ConfigSection;
 
 import java.util.HashMap;
@@ -35,7 +35,7 @@ public class TeamsParser implements Parser<TeamsModule> {
             throw new IllegalArgumentException("Team color must be specified.");
         if (cs.empty("max"))
             throw new IllegalArgumentException("Team max size must be specified.");
-        return new Team(cs.getString("name"), ParsingUtils.parseColor(cs.getString("color")), cs.getInt("max"));
+        return new Team(cs.getString("name"), ParserUtils.parseColor(cs.getString("color")), cs.getInt("max"));
     }
 
 }

@@ -6,7 +6,7 @@ import net.avicus.icarus.module.ParserException;
 import net.avicus.icarus.module.regions.Region;
 import net.avicus.icarus.module.teams.Team;
 import net.avicus.icarus.module.teams.TeamsModule;
-import net.avicus.icarus.utils.ParsingUtils;
+import net.avicus.icarus.utils.ParserUtils;
 import net.avicus.icarus.utils.config.ConfigSection;
 import org.bukkit.util.Vector;
 
@@ -46,10 +46,10 @@ public class SpawnsParser implements Parser<SpawnsModule> {
         List<Region> regions = new ArrayList<Region>();
 
         for (ConfigSection cs : config.getSectionList("regions"))
-            regions.add(ParsingUtils.parseRegion(match, cs));
+            regions.add(ParserUtils.parseRegion(match, cs));
 
         if (config.contains("look")) {
-            Vector to = ParsingUtils.parseVector(config.getString("look"));
+            Vector to = ParserUtils.parseVector(config.getString("look"));
             return new Spawn(id, team, regions, to);
         }
         else {

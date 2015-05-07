@@ -7,7 +7,7 @@ map:
     role: "Map designer, creator and YAML author."
   # Notch
   - uuid: bf331953-4f92-43ee-8abc-7544b8234936
-    role: "Helpd with building, provided design feedback."
+    role: "Helped with building, provided design feedback."
 
 
 teams:
@@ -85,30 +85,28 @@ loadouts:
   - night vision:1
   - damage resistance:5,5s
 
-regions:
-- id: jumps
-  join:
-  - point: -18, 65, -56
-  - point: -38, 65, -56
-  - point: -38, 75, 70
-  - point: -18, 75, 70
-- id: big-jumps
-  join:
-  - point: -28, 65, 27
-  - point: -28, 65, -13
+regions: []
 
 events:
-- on: move
+- type: move
   conditions:
-  - to:
-    - id: jumps
+  - type: region-to
+    region:
+      join:
+      - point: -18, 65, -56
+      - point: -38, 65, -56
+      - point: -38, 75, 70
+      - point: -18, 75, 70
   trigger:
-  - push: 3.5
+  - loop: red
+    push: 3.5
   - icarus: 1.9
-- on: move
+- type: move
   conditions:
-  - to:
-    - id: big-jumps
+  - type: region-to
+    join:
+    - point: -28, 65, 27
+    - point: -28, 65, -13
   trigger:
   - push: 7.5
   - icarus: 2.3
