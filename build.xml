@@ -51,7 +51,7 @@
 
     <target name="jar" depends="compile">
         <mkdir dir="${jar.dir}"/>
-        <echo message="${jar.dir}" />
+
         <!-- JAR File -->
         <jar destfile="${jar.dir}/Icarus.jar" basedir="${build.classes}">
             <!-- Manifest -->

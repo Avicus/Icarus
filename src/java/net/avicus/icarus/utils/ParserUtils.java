@@ -93,6 +93,13 @@ public class ParserUtils {
             config.remove("translate");
             return new RegionTranslate(parseRegion(match, config), translation);
         }
+        else if (config.contains("fill")) {
+            Vector base = parseVector("fill");
+            Vector a = parseVector(config.getStringList("bounds").get(0));
+            Vector b = parseVector(config.getStringList("bounds").get(1));
+            int height = config.getInt("height", 1);
+            return new RegionFill(a, b, base, height, null);
+        }
         else if (config.contains("point")) {
             Vector point = parseVector(config.getString("point"));
             return new RegionPoint(point);
