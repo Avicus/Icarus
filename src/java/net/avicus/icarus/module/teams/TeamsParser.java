@@ -21,7 +21,7 @@ public class TeamsParser implements Parser<TeamsModule> {
             try {
                 teams.put(cs.getString("id"), parseTeam(cs));
             } catch (Exception e) {
-                throw new ParserException(this, "Failed to parse team \"" + cs.getString("id") + "\".", e);
+                throw new ParserException(this, "Failed to parse team '" + cs.getString("id") + "'.", e);
             }
         }
 
@@ -35,7 +35,7 @@ public class TeamsParser implements Parser<TeamsModule> {
             throw new IllegalArgumentException("Team color must be specified.");
         if (cs.empty("max"))
             throw new IllegalArgumentException("Team max size must be specified.");
-        return new Team(cs.getString("name"), ParserUtils.parseColor(cs.getString("color")), cs.getInt("max"));
+        return new Team(cs.getString("name"), ParserUtils.parseChatColor(cs.getString("color")), cs.getInt("max"));
     }
 
 }

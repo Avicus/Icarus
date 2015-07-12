@@ -9,5 +9,4 @@ public class RegionGlobal implements Region {
     public boolean contains(Vector vector) {
         return true;
     }
-
 }

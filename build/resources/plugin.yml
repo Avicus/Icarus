@@ -1,7 +1,7 @@
 name: Icarus
 description: A game manager for Bukkit.
 main: net.avicus.icarus.Icarus
-version: @VERSION@-@BUILD@
+version: 1.0.0-DEV
 authors: [Avicus]
 commands:
   icarus:

@@ -1,8 +1,10 @@
 package net.avicus.icarus.module.events;
 
 import lombok.Getter;
+import lombok.ToString;
 import net.avicus.icarus.module.conditions.ConditionGroup;
 
+@ToString
 public class GameEvent {
 
     @Getter final GameEventType type;

@@ -8,8 +8,7 @@ import java.util.HashMap;
 
 @ToString
 public class RegionsModule implements Module {
-
-    @Getter HashMap<String, Region> regions;
+    @Getter final HashMap<String, Region> regions;
 
     public RegionsModule(HashMap<String, Region> regions) {
         this.regions = regions;
@@ -18,5 +17,4 @@ public class RegionsModule implements Module {
     public Region getRegionById(String id) {
         return regions.get(id);
     }
-
 }

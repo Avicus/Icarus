@@ -1,5 +1,6 @@
 package net.avicus.icarus.utils.config;
 
+import com.google.common.collect.ImmutableList;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -62,6 +63,14 @@ public class ConfigSection {
     }
 
     /**
+     * Remove a value.
+     * @param key
+     */
+    public void remove(String key) {
+        data.remove(key);
+    }
+
+    /**
      * Checks if a value is set.
      * @param key The path to the value.
      * @return If the key exists and is set to any value.
@@ -83,8 +92,9 @@ public class ConfigSection {
      * Retrieve a list of keys.
      * @return Set of all keys under this section.
      */
-    public Set<String> getKeys() {
-        return data.keySet();
+    public ImmutableList<String> getKeys() {
+        ImmutableList<String> list = ImmutableList.copyOf(data.keySet());
+        return list;
     }
 
     /**
@@ -125,6 +135,25 @@ public class ConfigSection {
     public int getInt(String key, int def) {
         Object val = get(key);
         return (Integer) (val == null ? def : val);
+    }
+
+    /**
+     * Retrieve any value stored in the config as a string.
+     * @param key Path to the data.
+     * @return Value of the key.
+     */
+    public String getAsString(String key) {
+        return get(key, null) + "";
+    }
+
+    /**
+     * Retrieve any value stored in the config as a string.
+     * @param key Path to the data.
+     * @param def Default to value if null.
+     * @return Value of the key.
+     */
+    public String getAsString(String key, String def) {
+        return get(key, def) + "";
     }
 
     /**
@@ -222,5 +251,4 @@ public class ConfigSection {
     public List<ConfigSection> getSectionList(String key) {
         return (List<ConfigSection>) get(key);
     }
-
 }

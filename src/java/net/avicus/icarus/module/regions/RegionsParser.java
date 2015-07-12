@@ -21,12 +21,12 @@ public class RegionsParser implements Parser<RegionsModule> {
             String id = cs.getString("id");
 
             if (regions.containsKey(id))
-                throw new ParserException(this, "Duplicate region ID used \"" + id + "\".");
+                throw new ParserException(this, "Duplicate region ID used '" + id + "'.");
 
             try {
                 regions.put(id, ParserUtils.parseRegion(match, cs));
             } catch (Exception e) {
-                throw new ParserException(this, "Failed to parse region \"" + id + "\".", e);
+                throw new ParserException(this, "Failed to parse region '" + id + "'.", e);
             }
         }
 

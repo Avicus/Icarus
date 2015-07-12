@@ -1,5 +1,6 @@
 package net.avicus.icarus.module.teams;
 
+import com.google.common.collect.ImmutableList;
 import lombok.ToString;
 import net.avicus.icarus.module.Module;
 import org.bukkit.ChatColor;
@@ -19,8 +20,8 @@ public class TeamsModule implements Module {
         this.teams.put("spectators", new Team("Spectators", ChatColor.AQUA, Integer.MAX_VALUE));
     }
 
-    public Collection<Team> getTeams() {
-        return teams.values();
+    public ImmutableList<Team> getTeams() {
+        return ImmutableList.copyOf(teams.values());
     }
 
     public Team getTeamById(String id) {

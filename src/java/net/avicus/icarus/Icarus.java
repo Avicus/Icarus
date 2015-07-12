@@ -17,7 +17,13 @@ public class Icarus extends JavaPlugin {
     }
 
     public void onEnable() {
-
+        Match match = new Match(new Config(getResource("net/avicus/icarus/map.yml")));
+        try {
+            match.init();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(match);
     }
 
     public void onDisable() {

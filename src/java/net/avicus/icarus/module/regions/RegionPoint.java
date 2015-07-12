@@ -4,8 +4,10 @@ import lombok.Getter;
 import lombok.ToString;
 import org.bukkit.util.Vector;
 
+import java.util.Random;
+
 @ToString
-public class RegionPoint implements Region {
+public class RegionPoint implements Region,RegionContainer {
 
     @Getter final Vector location;
 
@@ -20,4 +22,8 @@ public class RegionPoint implements Region {
                 location.getBlockZ() == vector.getBlockZ();
     }
 
+    @Override
+    public Vector getRandom(Random random) {
+        return location;
+    }
 }

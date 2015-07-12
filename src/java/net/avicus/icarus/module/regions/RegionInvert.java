@@ -7,18 +7,19 @@ import org.bukkit.util.Vector;
 import java.util.List;
 
 @ToString
-public class RegionJoin implements Region {
-    @Getter final List<Region> joined;
+public class RegionInvert implements Region {
 
-    public RegionJoin(List<Region> joined) {
-        this.joined = joined;
+    @Getter final List<Region> inverted;
+
+    public RegionInvert(List<Region> inverted) {
+        this.inverted = inverted;
     }
 
     @Override
     public boolean contains(Vector point) {
-        for (Region region : joined)
+        for (Region region : inverted)
             if (region.contains(point))
-                return true;
-        return false;
+                return false;
+        return true;
     }
 }

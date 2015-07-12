@@ -1,10 +1,12 @@
 package net.avicus.icarus.module.events.trigger;
 
+import lombok.ToString;
 import net.avicus.icarus.module.events.Trigger;
 import net.avicus.icarus.module.teams.Team;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
+@ToString
 public class IcarusTrigger extends Trigger {
 
     private double speed;

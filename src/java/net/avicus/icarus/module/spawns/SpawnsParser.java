@@ -24,7 +24,7 @@ public class SpawnsParser implements Parser<SpawnsModule> {
             try {
                 spawns.add(parseSpawn(match, config));
             } catch (Exception ex) {
-                throw new ParserException(this, "Unable to parse spawn \"" + config.getString("id") + "\".", ex);
+                throw new ParserException(this, "Unable to parse spawn '" + config.getString("id") + "'.", ex);
             }
         }
 
@@ -41,7 +41,7 @@ public class SpawnsParser implements Parser<SpawnsModule> {
         Team team = match.getModule(TeamsModule.class).getTeamById(config.getString("team", "spectators"));
 
         if (team == null)
-            throw new IllegalArgumentException("Unknown team \"" + config.getString("team") + "\".");
+            throw new IllegalArgumentException("Unknown team '" + config.getString("team") + "'.");
 
         List<Region> regions = new ArrayList<Region>();
 

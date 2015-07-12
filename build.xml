@@ -1,0 +1,74 @@
+<project default="jar">
+    <property environment="env" />
+
+
+    <!-- Icarus Properties -->
+    <property name="version" value="0.0.1" />
+
+    <!-- Build Properties -->
+    <property name="lib" value="lib"/>
+    <property name="src" value="src/java"/>
+    <property name="resources" value="src/resources"/>
+    <property name="main-class" value="net.avicus.atlas.Atlas"/>
+    <property name="build.classes" value="build/classes"/>
+    <property name="build.resources" value="build/resources"/>
+    <property name="jar.dir" value="build"/>
+
+    <fail message="Unsupported Java version: ${ant.java.version}. Make sure you are using Java JDK 1.8.">
+        <condition>
+            <not>
+                <equals arg1="${ant.java.version}" arg2="1.8"/>
+            </not>
+        </condition>
+    </fail>
+
+    <condition property="build" value="${env.BUILD_NUMBER}" else="DEV">
+        <isset property="env.BUILD_NUMBER" />
+    </condition>
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${build.classes}"/>
+        <javac srcdir="${src}" debug="on" destdir="${build.classes}">
+            <classpath>
+                <fileset dir="${lib}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+
+        <copy todir="${build.resources}">
+            <fileset dir="${resources}"/>
+            <filterset>
+                <filter token="VERSION" value="${version}"/>
+                <filter token="BUILD" value="${build}"/>
+            </filterset>
+        </copy>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}"/>
+        <echo message="${jar.dir}" />
+        <!-- JAR File -->
+        <jar destfile="${jar.dir}/Icarus.jar" basedir="${build.classes}">
+            <!-- Manifest -->
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+            </manifest>
+
+            <!-- Libraries -->
+            <zipgroupfileset dir="${lib}">
+                <include name="**/*.jar" />
+                <exclude name="META-INF/*"/>
+                <exclude name="spigot*.jar" />
+                <exclude name="lombo*.jar" />
+            </zipgroupfileset>
+
+            <!-- Config Files -->
+            <fileset dir="${build.resources}"/>
+        </jar>
+    </target>
+</project>

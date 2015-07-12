@@ -48,14 +48,14 @@ public class EventsParser implements Parser<EventsModule> {
     }
 
     public Trigger parseTrigger(Match match, ConfigSection config) throws Exception {
-        String[] keys = config.getKeys().toArray(new String[config.getKeys().size()]);
+        List<String> keys = config.getKeys();
 
-        String type = keys[0];
+        String type = keys.get(0);
         boolean loop = false;
         Trigger trigger = null;
 
         if (type.equals("loop")) {
-            type = keys[1];
+            type = keys.get(1);
             loop = true;
         }
 
@@ -83,7 +83,7 @@ public class EventsParser implements Parser<EventsModule> {
             Team testTeam = match.getModule(TeamsModule.class).getTeamById(loopType);
             if (testTeam != null)
                 return TriggerLoop.newLoopTeam(match, trigger, testTeam);
-            throw new IllegalArgumentException("Unknown loop type \"" + loopType + "\".");
+            throw new IllegalArgumentException("Unknown loop type '" + loopType + "'.");
         }
 
         return trigger;

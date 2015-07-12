@@ -1,7 +1,9 @@
 package net.avicus.icarus.module.conditions;
 
-public class Condition {
+import net.avicus.icarus.match.Match;
 
+public interface Condition {
 
+    public Response query(Match match, Object object);
 
 }

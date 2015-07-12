@@ -1,10 +1,12 @@
 package net.avicus.icarus.module.conditions;
 
 import lombok.Getter;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@ToString
 public class ConditionGroup {
 
     @Getter List<Condition> conditions;

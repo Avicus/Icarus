@@ -1,10 +1,12 @@
 package net.avicus.icarus.module.events;
 
 import lombok.Getter;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@ToString
 public class TriggerGroup {
 
     @Getter List<Trigger> conditions;
