@@ -9,7 +9,7 @@
     <property name="lib" value="lib"/>
     <property name="src" value="src/java"/>
     <property name="resources" value="src/resources"/>
-    <property name="main-class" value="net.avicus.atlas.Atlas"/>
+    <property name="main-class" value="net.avicus.icarus.Icarus"/>
     <property name="build.classes" value="build/classes"/>
     <property name="build.resources" value="build/resources"/>
     <property name="jar.dir" value="build"/>
